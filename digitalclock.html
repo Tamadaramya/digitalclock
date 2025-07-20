@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            background-repeat: no-repeat;
+            background-position: contain;
+            background-size: 100vh 100vh;
+            background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvmHylnRyfDDXFtoueuodrnBCmng27DE_-OA&s)
+        } 
+        #container{
+            width:100vh;
+            height:100vh;
+            display:flex; 
+            align-items:center;
+            justify-content:center;
+        }
+        #clock{
+            background-color:rgba(0, 255, 255, 0.218);
+            width:80%;
+            height:100px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-family:monospace;
+            font-size:50px;
+            backdrop-filter: blur(5px);
+            color:rgb(2, 224, 248);
+            text-shadow:3px 3px 5px rgb(0, 187, 255)
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <div id="clock">00:00:00</div>
+    </div>
+    <script>
+        clock=document.getElementById("clock");
+        function update(){
+            current_time=new Date();
+            hours=current_time.getHours();
+            merdian=hours>12?"PM":"AM";
+            hours=hours%12;
+            hours=hours.toString().padStart(2,0);
+            minutes=current_time.getMinutes().toString().padStart(2,0);
+            seconds=current_time.getSeconds().toString().padStart(2,0);
+            clock.textContent=`${hours}:${minutes}:${seconds} ${merdian}`
+            console.log(`${hours}:${minutes}:${seconds}`)
+
+        }
+        update();
+        setInterval(update,1000);
+    </script>
+</body>
+</html>
